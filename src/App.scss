@@ -1,0 +1,913 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  // Modern Dark Theme Colors
+  --bg-main: #0A0B1E;          // Deep navy/black
+  --bg-secondary: #12132D;     // Rich navy
+  --bg-card: #1A1B3D;          // Navy card background
+  
+  // Primary Colors
+  --primary: #4F46E5;         // Indigo
+  --primary-light: #818CF8;   // Light indigo
+  --primary-dark: #3730A3;    // Deep indigo
+  
+  // Text Colors
+  --text-primary: #FFFFFF;    // Pure white
+  --text-secondary: #94A3B8;  // Light gray
+  --text-muted: #64748B;     // Muted text
+  
+  // Accent Colors
+  --accent-1: #F472B6;        // Pink
+  --accent-2: #38BDF8;        // Sky blue
+  --accent-3: #34D399;        // Emerald
+  
+  // Gradients
+  --gradient-primary: linear-gradient(
+    135deg,
+    #4F46E5 0%,
+    #F472B6 100%
+  );
+  
+  --gradient-hover: linear-gradient(
+    135deg,
+    #3730A3 0%,
+    #DB2777 100%
+  );
+
+  // Shadows
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  
+  // Glass Effect Colors
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  
+  // Elegant Gradients
+  --gradient-subtle: linear-gradient(
+    45deg,
+    rgba(139, 92, 246, 0.1) 0%,
+    rgba(244, 63, 94, 0.1) 50%,
+    rgba(14, 165, 233, 0.1) 100%
+  );
+
+  // Modern Typography
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Cabinet Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  
+  // Spacing System
+  --space-unit: 0.5rem;
+  --space-xs: calc(var(--space-unit) * 1);    // 0.5rem
+  --space-sm: calc(var(--space-unit) * 2);    // 1rem
+  --space-md: calc(var(--space-unit) * 4);    // 2rem
+  --space-lg: calc(var(--space-unit) * 8);    // 4rem
+  --space-xl: calc(var(--space-unit) * 16);   // 8rem
+  
+  // Border Radius
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+// Refined Background
+body {
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(244, 63, 94, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
+  font-family: var(--font-main);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      linear-gradient(90deg, var(--bg-main) 11px, transparent 1%) 50%,
+      linear-gradient(var(--bg-main) 11px, transparent 1%) 50%,
+      rgba(139, 92, 246, 0.1);
+    background-size: 12px 12px;
+    opacity: 0.3;
+  }
+}
+
+// Modern Section Styling
+.section {
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 80px;
+    
+    h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60%;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+      }
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Elegant Card Design
+.card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+// Add a specific class for cards that should have hover effects
+.card--hoverable {
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 
+      0 20px 40px rgba(139, 92, 246, 0.1),
+      0 0 20px rgba(139, 92, 246, 0.1) inset;
+  }
+}
+
+// Refined Button Styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
+  
+  &-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  &-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    
+    &:hover {
+      background: var(--primary);
+      color: white;
+    }
+  }
+}
+
+// Modern Grid Layout
+.grid {
+  display: grid;
+  gap: 2rem;
+  
+  &-2 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  }
+  
+  &-3 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+}
+
+// Modern Section Heading
+.section-heading {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    
+    // Modern underline effect
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+      opacity: 0.8;
+    }
+
+    // Gradient text on hover
+    &:hover {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  // Remove number styles
+  .number {
+    display: none;
+  }
+
+  // Remove old line
+  .line {
+    display: none;
+  }
+
+  // Optional subtitle
+  p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+// Update heading colors throughout
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  opacity: 0.8;
+}
+
+// Elegant Links
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: var(--primary-light);
+  }
+}
+
+// Modern Tech Tags
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--gradient-subtle);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--primary);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+}
+
+// Modern Layout Components
+.container {
+  width: min(100% - 3rem, 1200px);
+  margin-inline: auto;
+  padding: var(--space-md) var(--space-sm);
+}
+
+// Modern Link Styles
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: var(--primary-light);
+  }
+}
+
+// Improved Scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  
+  &:hover {
+    background: var(--primary-light);
+  }
+}
+
+// Selection Style
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(90deg, var(--bg-main) 21px, transparent 1%) center,
+      linear-gradient(var(--bg-main) 21px, transparent 1%) center,
+      rgba(0, 255, 209, 0.1);
+    background-size: 22px 22px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+main {
+  padding-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+// Animations
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--gradient-secondary);
+  }
+}
+
+// Selection color
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+// Code elements
+.code {
+  font-family: 'Fira Code', monospace;
+  color: var(--primary);
+  background: var(--bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+// Text gradient
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.75rem;
+    
+    .number {
+      font-size: 1.25rem;
+    }
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+// Update tech tags
+.tech-tag {
+  color: var(--primary);
+  background: rgba(0, 255, 209, 0.1);
+  border: 1px solid rgba(0, 255, 209, 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 255, 209, 0.2);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+}
+
+// Glowing text effect
+.glow-text {
+  color: var(--primary);
+  text-shadow: var(--neon-glow);
+}
+
+// Animated border
+.border-glow {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-primary);
+    border-radius: inherit;
+    z-index: -1;
+    animation: borderGlow 3s ease-in-out infinite;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Container widths
+.container {
+  width: 100%;
+  max-width: var(--desktop);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @media (max-width: 1200px) {
+    max-width: var(--laptop);
+  }
+
+  @media (max-width: 1024px) {
+    max-width: var(--tablet);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+// Typography scaling
+html {
+  @media (max-width: 1024px) {
+    font-size: 95%;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 90%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 85%;
+  }
+}
+
+// Section spacing
+section {
+  padding: 100px 0;
+
+  @media (max-width: 1024px) {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 0;
+  }
+}
+
+// Button responsive styles
+.btn {
+  @media (max-width: 768px) {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// Card responsive styles
+.card {
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+// Section headings
+.section-heading {
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.75rem;
+    }
+    .number {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// Grid layouts
+.grid {
+  display: grid;
+  gap: 2rem;
+
+  &-2 {
+    grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &-3 {
+    grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Add smooth transitions
+.section-heading h2,
+h1, h2, h3, h4 {
+  transition: all 0.3s ease;
+}
+
+// Hero Section Styling
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom right,
+    var(--bg-main),
+    var(--bg-secondary)
+  );
+
+  // Modern animated background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(109, 40, 217, 0.15) 0%, transparent 40%);
+    animation: backgroundFloat 20s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__text {
+    animation: fadeIn 1s ease;
+
+    &__greeting {
+      display: inline-block;
+      font-family: var(--font-mono);
+      color: var(--accent-1);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(236, 72, 153, 0.1);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      
+      .highlight {
+        display: block;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-top: 0.5rem;
+      }
+    }
+
+    &__description {
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+
+      .company {
+        color: var(--accent-1);
+        font-weight: 600;
+        position: relative;
+        white-space: nowrap;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          width: 100%;
+          height: 2px;
+          background: var(--accent-1);
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-lg);
+      opacity: 0.1;
+      filter: blur(40px);
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-lg);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) brightness(1.1);
+      transition: transform 0.5s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+      
+      img {
+        width: 20px;
+        height: 20px;
+        transition: all 0.3s ease;
+      }
+      
+      &:hover {
+        background: var(--gradient-primary);
+        transform: translateY(-3px);
+        
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+  }
+
+  @keyframes backgroundFloat {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.1;
+      filter: blur(40px);
+    }
+    50% {
+      opacity: 0.2;
+      filter: blur(30px);
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: 1024px) {
+    &__content {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 3rem;
+    }
+
+    &__text {
+      &__description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &__social {
+      justify-content: center;
+    }
+
+    &__image-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 0;
+
+    &__content {
+      padding: 0 1.5rem;
+    }
+
+    &__text {
+      h1 {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        
+        .highlight {
+          font-size: clamp(2rem, 5vw, 3rem);
+        }
+      }
+    }
+  }
+}
+
+// Add this to hide section IDs
+section::before {
+  content: none !important;
+  display: none !important;
+}
+
+// Or alternatively, add this to adjust scroll offset
+html {
+  scroll-padding-top: 60px; // Height of your navbar
+} 

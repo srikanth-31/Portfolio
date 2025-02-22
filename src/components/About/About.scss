@@ -1,0 +1,178 @@
+.about {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__content {
+    margin-top: 4rem;
+
+    @media (max-width: 768px) {
+      margin-top: 2rem;
+    }
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  &__image-container {
+    display: none;
+  }
+
+  &__bio {
+    width: 100%;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 800px;
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .company {
+      color: var(--accent-1);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  .skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    .skill-tag {
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      color: var(--primary);
+      font-size: 0.9rem;
+
+      @media (max-width: 480px) {
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  .experience-cards {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .experience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+
+        .role-info {
+          h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+          }
+
+          .company-name {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+          }
+        }
+
+        .period {
+          padding: 0.5rem 1rem;
+          background: rgba(255, 44, 247, 0.1);
+          border-radius: 20px;
+          color: var(--primary);
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 1rem;
+
+          .period {
+            align-self: flex-start;
+          }
+        }
+      }
+
+      .description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .highlights {
+        list-style: none;
+        display: grid;
+        gap: 1rem;
+
+        li {
+          display: flex;
+          gap: 1rem;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+
+          i {
+            color: var(--accent-1);
+            margin-top: 5px;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    &__intro {
+      .tech-stack {
+        justify-content: center;
+      }
+    }
+
+    .experience-cards {
+      .card-header {
+        flex-direction: column;
+        gap: 1rem;
+
+        .period {
+          align-self: flex-start;
+        }
+      }
+    }
+  }
+} 
